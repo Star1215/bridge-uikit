@@ -248,6 +248,14 @@ var IconButton = styled(Button)(templateObject_1$I || (templateObject_1$I = __ma
 });
 var templateObject_1$I;
 
+var Icon$1y = function (props) {
+    return (React.createElement("svg", __assign({ width: "20", height: "20", viewBox: "0 0 500 500", fill: "none" }, props),
+    React.createElement("circle", { fill: "#FF0420", cx: "250", cy: "250", r: "250" }),
+        React.createElement("path", {"fill-rule": "evenodd", "clip-rule": "evenodd", d: "M177.133 316.446C162.247 316.446 150.051 312.943 140.544 305.938C131.162 298.808 126.471 288.676 126.471 275.541C126.471 272.789 126.784 269.411 127.409 265.408C129.036 256.402 131.35 245.581 134.352 232.947C142.858 198.547 164.812 181.347 200.213 181.347C209.845 181.347 218.476 182.973 226.107 186.225C233.738 189.352 239.742 194.106 244.12 200.486C248.498 206.74 250.688 214.246 250.688 223.002C250.688 225.629 250.375 228.944 249.749 232.947C247.873 244.08 245.621 254.901 242.994 265.408C238.616 282.546 231.048 295.368 220.29 303.874C209.532 312.255 195.147 316.446 177.133 316.446ZM179.76 289.426C186.766 289.426 192.707 287.362 197.586 283.234C202.59 279.106 206.155 272.789 208.281 264.283C211.158 252.524 213.348 242.266 214.849 233.51C215.349 230.883 215.599 228.194 215.599 225.441C215.599 214.058 209.657 208.366 197.774 208.366C190.768 208.366 184.764 210.43 179.76 214.558C174.882 218.687 171.379 225.004 169.253 233.51C167.001 241.891 164.749 252.149 162.498 264.283C161.997 266.784 161.747 269.411 161.747 272.163C161.747 283.672 167.752 289.426 179.76 289.426Z", fill: "white" }),
+        React.createElement("path", {"fill-rule": "evenodd", "clip-rule": "evenodd", d: "M259.303 314.57C257.927 314.57 256.863 314.132 256.113 313.256C255.487 312.255 255.3 311.13 255.55 309.879L281.444 187.914C281.694 186.538 282.382 185.412 283.508 184.536C284.634 183.661 285.822 183.223 287.073 183.223H336.985C350.87 183.223 362.003 186.1 370.384 191.854C378.891 197.609 383.144 205.927 383.144 216.81C383.144 219.937 382.769 223.19 382.018 226.567C378.891 240.953 372.574 251.586 363.067 258.466C353.685 265.346 340.8 268.786 324.413 268.786H299.082L290.451 309.879C290.2 311.255 289.512 312.38 288.387 313.256C287.261 314.132 286.072 314.57 284.822 314.57H259.303ZM325.727 242.892C330.98 242.892 335.546 241.453 339.424 238.576C343.427 235.699 346.054 231.571 347.305 226.192C347.68 224.065 347.868 222.189 347.868 220.563C347.868 216.935 346.805 214.183 344.678 212.307C342.551 210.305 338.924 209.305 333.795 209.305H311.278L304.148 242.892H325.727Z", fill: "white" })
+        ));
+};
+
 var Icon$1t = function (props) {
     return (React.createElement(Svg, __assign({ width: "72", height: "40", viewBox: "-5 1.2 83 38" }, props),
         React.createElement("path", { d: "M43 21H37V27H35V21H29V19H35V13H37V19H43V21Z", fill: "#A0B9FB" }),
@@ -935,16 +943,20 @@ var templateObject_1$v, templateObject_2$f;
 
 var requestChainChange = function (chainId, setChain) { return __awaiter(void 0, void 0, void 0, function () {
     var provider, error_1;
+    console.log('debug backend chainId st1::', chainId, setChain)
     return __generator(this, function (_a) {
+        console.log('debug backend chainId st2::', _a.label)
         switch (_a.label) {
             case 0:
                 provider = window.ethereum;
                 if (!(provider !== undefined)) return [3 /*break*/, 12];
                 _a.label = 1;
+                console.log('debug backend chainId case0 ::', _a.label)
             case 1:
-                _a.trys.push([1, 10, , 11]);
+                // _a.trys.push([1, 12, 13]);
                 if (!(chainId === 1)) return [3 /*break*/, 3];
                 // @ts-ignore
+                console.log('debug backend chainId case1 ::', _a.label)
                 return [4 /*yield*/, provider.request({
                         method: 'wallet_switchEthereumChain',
                         params: [{
@@ -955,10 +967,12 @@ var requestChainChange = function (chainId, setChain) { return __awaiter(void 0,
                 // @ts-ignore
                 _a.sent();
                 setChain(1);
-                return [3 /*break*/, 9];
+                console.log('debug backend chainId case2 ::')
+                return [3 /*break*/, 11];
             case 3:
                 if (!(chainId === 250)) return [3 /*break*/, 5];
                 // @ts-ignore
+                console.log('debug backend chainId case3 ::')
                 return [4 /*yield*/, provider.request({
                         method: 'wallet_addEthereumChain',
                         params: [
@@ -966,46 +980,91 @@ var requestChainChange = function (chainId, setChain) { return __awaiter(void 0,
                                 chainId: '0xfa',
                                 chainName: 'Fantom Opera',
                                 nativeCurrency: {
-                                    name: 'FTM',
-                                    symbol: 'ftm',
+                                    name: 'Fantom',
+                                    symbol: 'FTM',
                                     decimals: 18
                                 },
                                 rpcUrls: ["https://rpc.ftm.tools/"],
                                 blockExplorerUrls: ["https://ftmscan.com/"]
                             }
                         ]
+                        // method: 'wallet_switchEthereumChain',
+                        // params: [{
+                        //         chainId: '0xfa'
+                        //     }]
                     })];
             case 4:
                 // @ts-ignore
                 _a.sent();
                 setChain(250);
-                return [3 /*break*/, 9];
+                console.log('debug backend chainId case4 ::')
+                return [3 /*break*/, 11];
             case 5:
                 if (!(chainId === 43114)) return [3 /*break*/, 7];
+                console.log('debug backend chainId case5 ::')
                 // @ts-ignore
                 return [4 /*yield*/, provider.request({
                         method: 'wallet_addEthereumChain',
                         params: [
                             {
                                 chainId: '0xa86a',
-                                chainName: 'Avalanche',
+                                chainName: 'Avalanche C-Chain',
                                 nativeCurrency: {
-                                    name: 'AVAX',
-                                    symbol: 'avax',
+                                    name: 'avax',
+                                    symbol: 'AVAX',
                                     decimals: 18
                                 },
-                                rpcUrls: ["https://api.avax.network/ext.bc/C/rpc"],
+                                rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
                                 blockExplorerUrls: ["https://snowtrace.io/"]
                             }
                         ]
+                        // method: 'wallet_switchEthereumChain',
+                        // params: [{
+                        //         chainId: '0xa86a'
+                        //     }]
                     })];
             case 6:
                 // @ts-ignore
                 _a.sent();
                 setChain(43114);
-                return [3 /*break*/, 9];
-            case 7: 
+                console.log('debug backend chainId case6 ::')
+                return [3 /*break*/, 11];
+            
+            case 7:
+                if (!(chainId === 10)) return [3 /*break*/, 9];
+                console.log('debug backend chainId case7 ::')
+                // @ts-ignore
+                return [4 /*yield*/, provider.request({
+                    // method: 'wallet_addEthereumChain',
+                    // params: [
+                    //     {
+                    //         chainId: '0xa',
+                    //         chainName: 'Optimism',
+                    //         nativeCurrency: {
+                    //             name: 'ETHER',
+                    //             symbol: 'ETHER',
+                    //             decimals: 18
+                    //         },
+                    //         rpcUrls: ["https://mainnet.optimism.io"],
+                    //         blockExplorerUrls: ["https://optimistic.etherscan.io"]
+                    //     }
+                    // ]
+                    
+                        method: 'wallet_switchEthereumChain',
+                        params: [{
+                                chainId: '0xa'
+                            }]
+                    })];
+            case 8:
+                // @ts-ignore
+                _a.sent();
+                setChain(10);
+                console.log('debug backend chainId case8 ::')
+                return [3 /*break*/, 11];
+
+            case 9: 
             // @ts-ignore
+            console.log('debug backend chainId case9 ::')
             return [4 /*yield*/, provider.request({
                     method: 'wallet_addEthereumChain',
                     params: [
@@ -1014,7 +1073,7 @@ var requestChainChange = function (chainId, setChain) { return __awaiter(void 0,
                             chainName: 'Binance Smart Chain Mainnet',
                             nativeCurrency: {
                                 name: 'BNB',
-                                symbol: 'bnb',
+                                symbol: 'BNB',
                                 decimals: 18,
                             },
                             rpcUrls: ["https://bsc-dataseed1.binance.org/"],
@@ -1022,21 +1081,33 @@ var requestChainChange = function (chainId, setChain) { return __awaiter(void 0,
                         },
                     ]
                 })];
-            case 8:
+            case 10:
                 // @ts-ignore
                 _a.sent();
                 setChain(56);
-                _a.label = 9;
-            case 9: return [2 /*return*/, true];
-            case 10:
+                _a.label = 11;
+                console.log('debug backend chainId case10 ::')
+
+            case 11: // 9 
+            console.log('debug backend chainId case 11 ::')
+            return [2 /*return*/, true];
+
+            case 12: // 10
                 error_1 = _a.sent();
                 console.error(error_1);
+                console.log('debug backend chainId case 12 ::')
                 return [2 /*return*/, false];
-            case 11: return [3 /*break*/, 13];
-            case 12:
+            
+            case 13:    // 11
+                console.log('debug backend chainId case 13 ::')
+            return [3 /*break*/, 15];
+            
+            case 14:    // 12
                 console.error("Can't setup the network on metamask because window.ethereum is undefined");
                 return [2 /*return*/, false];
-            case 13: return [2 /*return*/];
+            case 15:    // 13
+                
+                return [2 /*return*/];
         }
     });
 }); };
@@ -1089,6 +1160,15 @@ var AvalancheIcon = function (props) {
         React.createElement("rect", { x: "287", y: "258", width: "928", height: "844", fill: "white" }),
         React.createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M1502.5 752C1502.5 1166.77 1166.27 1503 751.5 1503C336.734 1503 0.5 1166.77 0.5 752C0.5 337.234 336.734 1 751.5 1C1166.27 1 1502.5 337.234 1502.5 752ZM538.688 1050.86H392.94C362.314 1050.86 347.186 1050.86 337.962 1044.96C327.999 1038.5 321.911 1027.8 321.173 1015.99C320.619 1005.11 328.184 991.822 343.312 965.255L703.182 330.935C718.495 303.999 726.243 290.531 736.021 285.55C746.537 280.2 759.083 280.2 769.599 285.55C779.377 290.531 787.126 303.999 802.438 330.935L876.42 460.079L876.797 460.738C893.336 489.635 901.723 504.289 905.385 519.669C909.443 536.458 909.443 554.169 905.385 570.958C901.695 586.455 893.393 601.215 876.604 630.549L687.573 964.702L687.084 965.558C670.436 994.693 661.999 1009.46 650.306 1020.6C637.576 1032.78 622.263 1041.63 605.474 1046.62C590.161 1050.86 573.004 1050.86 538.688 1050.86ZM906.75 1050.86H1115.59C1146.4 1050.86 1161.9 1050.86 1171.13 1044.78C1181.09 1038.32 1187.36 1027.43 1187.92 1015.63C1188.45 1005.1 1181.05 992.33 1166.55 967.307C1166.05 966.455 1165.55 965.588 1165.04 964.706L1060.43 785.75L1059.24 783.735C1044.54 758.877 1037.12 746.324 1027.59 741.472C1017.08 736.121 1004.71 736.121 994.199 741.472C984.605 746.453 976.857 759.552 961.544 785.934L857.306 964.891L856.949 965.507C841.69 991.847 834.064 1005.01 834.614 1015.81C835.352 1027.62 841.44 1038.5 851.402 1044.96C860.443 1050.86 875.94 1050.86 906.75 1050.86Z", fill: "#E84142" })));
 };
+
+var OptimismIcon = function (props) {
+    return (React.createElement("svg", __assign({ width: "20", height: "20", viewBox: "0 0 500 500", fill: "none" }, props),
+    React.createElement("circle", { fill: "#FF0420", cx: "250", cy: "250", r: "250" }),
+        React.createElement("path", {"fill-rule": "evenodd", "clip-rule": "evenodd", d: "M177.133 316.446C162.247 316.446 150.051 312.943 140.544 305.938C131.162 298.808 126.471 288.676 126.471 275.541C126.471 272.789 126.784 269.411 127.409 265.408C129.036 256.402 131.35 245.581 134.352 232.947C142.858 198.547 164.812 181.347 200.213 181.347C209.845 181.347 218.476 182.973 226.107 186.225C233.738 189.352 239.742 194.106 244.12 200.486C248.498 206.74 250.688 214.246 250.688 223.002C250.688 225.629 250.375 228.944 249.749 232.947C247.873 244.08 245.621 254.901 242.994 265.408C238.616 282.546 231.048 295.368 220.29 303.874C209.532 312.255 195.147 316.446 177.133 316.446ZM179.76 289.426C186.766 289.426 192.707 287.362 197.586 283.234C202.59 279.106 206.155 272.789 208.281 264.283C211.158 252.524 213.348 242.266 214.849 233.51C215.349 230.883 215.599 228.194 215.599 225.441C215.599 214.058 209.657 208.366 197.774 208.366C190.768 208.366 184.764 210.43 179.76 214.558C174.882 218.687 171.379 225.004 169.253 233.51C167.001 241.891 164.749 252.149 162.498 264.283C161.997 266.784 161.747 269.411 161.747 272.163C161.747 283.672 167.752 289.426 179.76 289.426Z", fill: "white" }),
+        React.createElement("path", {"fill-rule": "evenodd", "clip-rule": "evenodd", d: "M259.303 314.57C257.927 314.57 256.863 314.132 256.113 313.256C255.487 312.255 255.3 311.13 255.55 309.879L281.444 187.914C281.694 186.538 282.382 185.412 283.508 184.536C284.634 183.661 285.822 183.223 287.073 183.223H336.985C350.87 183.223 362.003 186.1 370.384 191.854C378.891 197.609 383.144 205.927 383.144 216.81C383.144 219.937 382.769 223.19 382.018 226.567C378.891 240.953 372.574 251.586 363.067 258.466C353.685 265.346 340.8 268.786 324.413 268.786H299.082L290.451 309.879C290.2 311.255 289.512 312.38 288.387 313.256C287.261 314.132 286.072 314.57 284.822 314.57H259.303ZM325.727 242.892C330.98 242.892 335.546 241.453 339.424 238.576C343.427 235.699 346.054 231.571 347.305 226.192C347.68 224.065 347.868 222.189 347.868 220.563C347.868 216.935 346.805 214.183 344.678 212.307C342.551 210.305 338.924 209.305 333.795 209.305H311.278L304.148 242.892H325.727Z", fill: "white" })
+        ));
+};
+
 var FantomIcon = function (props) {
     return (React.createElement("svg", __assign({ width: "20", height: "20", viewBox: "0 0 32 32" }, props),
         React.createElement("defs", null,
@@ -1126,8 +1206,9 @@ var ChainSelect = function (_a) {
                 justifyContent: 'space-between',
                 gap: '6px'
             } },
-            chain === 1 ? React.createElement(EthereumIcon, null) : chain === 56 ? React.createElement(BinanceIcon, null) : chain === 250 ? React.createElement(FantomIcon, null) : chain === 43114 ? React.createElement(AvalancheIcon, null) : React.createElement(Icon$14, { width: '22px', height: '22px' }),
-            chain === 1 ? 'Ethereum' : chain === 56 ? 'Binance' : chain === 250 ? 'Fantom' : chain === 43114 ? 'Avalanche' : 'Unknown',
+            chain === 1 ? React.createElement(EthereumIcon, null) : chain === 10 ? React.createElement(OptimismIcon, null) : chain === 56 ? React.createElement(BinanceIcon, null) : chain === 250 ? React.createElement(FantomIcon, null) : chain === 43114 ? React.createElement(AvalancheIcon, null) : React.createElement(Icon$14, { width: '22px', height: '22px' }),
+            chain === 1 ? 'Ethereum' : chain === 10 ? 'Optimism' : chain === 56 ? 'Binance' : chain === 250 ? 'Fantom' : chain === 43114 ? 'Avalanche' : 'Unknown',
+            
             React.createElement(ChevronDownIcon, null)) },
         React.createElement(MyDropdown, { style: {
                 borderRadius: '0px 0px 8px 8px',
@@ -1138,6 +1219,9 @@ var ChainSelect = function (_a) {
             React.createElement("span", { style: __assign(__assign({}, listStyle), { pointerEvents: otherChainId === 1 ? 'none' : 'initial', opacity: otherChainId === 1 ? '0.4' : '1' }), onClick: function () { return handleChangeChain ? onChange(1) : requestChainChange(1, setChain); } },
                 React.createElement(EthereumIcon, null),
                 React.createElement(ChainName, { style: { fontFamily: 'Poppins' } }, "Ethereum")),
+            React.createElement("span", { style: __assign(__assign({}, listStyle), { pointerEvents: otherChainId === 10 ? 'none' : 'initial', opacity: otherChainId === 10 ? '0.4' : '1' }), onClick: function () { return handleChangeChain ? onChange(10) : requestChainChange(10, setChain); } },
+                React.createElement(OptimismIcon, null),
+                React.createElement(ChainName, { style: { fontFamily: 'Poppins' } }, "Optimism")),
             React.createElement("span", { style: __assign(__assign({}, listStyle), { pointerEvents: otherChainId === 56 ? 'none' : 'initial', opacity: otherChainId === 56 ? '0.4' : '1' }), onClick: function () { return handleChangeChain ? onChange(56) : requestChainChange(56, setChain); } },
                 React.createElement(BinanceIcon, null),
                 React.createElement(ChainName, { style: { fontFamily: 'Poppins' } }, "Binance")),
@@ -3576,4 +3660,4 @@ var darkTheme = __assign(__assign({}, base), { isDark: true, alert: dark$6, butt
 
 var lightTheme = __assign(__assign({}, base), { isDark: false, alert: light$6, button: light$5, colors: lightColors, card: light$4, toggle: light$2, nav: light$1, modal: light, radio: light$3 });
 
-export { Icon$1t as AddIcon, Icon$1s as AddNoRoundIcon, Icon$L as AlarmIcon, Alert, Icon$1r as ArrowBackIcon, Icon$1q as ArrowDownIcon, Icon$1j as ArrowDownNoCircleIcon, Icon$1p as ArrowDropDownIcon, Icon$1o as ArrowDropUpIcon, Icon$1n as ArrowForwardIcon, Icon$1m as AutoRenewIcon, Icon$1l as AvalancheIcon, BackgroundImage, GridLayout$1 as BaseLayout, Icon$1k as BinanceIcon, Icon$1v as BlockIcon, Breadcrumbs, Button, ButtonMenu, ButtonMenuItem, Icon$1h as CalculateIcon, Card, CardBody, CardFooter, CardHeader, CardRibbon, Icon$1i as CardViewIcon, GridLayout as CardsLayout, ChainSelect, Checkbox, Icon$1x as CheckmarkCircleIcon, Icon$1g as CheckmarkIcon, Icon$1f as ChevronDownIcon, Icon$1e as ChevronLeftIcon, Icon$1d as ChevronRightIcon, Icon$1c as ChevronUpIcon, Icon$1b as CloseIcon, Icon$1a as CogIcon, Icon$18 as CommunityIcon, Icon$W as CopyCircleIcon, Icon$17 as CopyIcon, Dropdown, Icon$1w as ErrorIcon, Icon$16 as EthereumIcon, Icon$15 as FantomIcon, Flex, Heading, Icon$14 as HelpIcon, IconButton, Image, Icon$1u as InfoIcon, Input$1 as Input, Link, LinkExternal, Icon$13 as ListViewIcon, Icon$11 as LogoIcon, Icon$10 as LogoRoundIcon, Icon$12 as LogoWithTitleIcon, Menu, Icon$J as MetamaskIcon, Icon$$ as MiningIcon, Icon$_ as MinusIcon, Modal, ModalProvider, Icon$Z as NoProfileAvatarIcon, Icon$Y as OpenNewIcon, Icon$I as PaladinIcon, Icon$X as PancakesIcon, Progress, Icon$T as ProgressBunny, Radio, Icon$19 as RecentIcon, Icon$V as RemoveIcon, ResetCSS, Icon$P as SearchIcon, Skeleton, Spinner, Icon$K as SuccessIcon, Svg, Icon$O as SwapVertIcon, Icon$N as SyncAltIcon, Tag, Text, Icon$R as Ticket, Icon$Q as TicketRound, ToastContainer, Toggle, Icon$U as VerifiedIcon, Icon$M as WarningIcon, Icon$S as Won, variants as alertVariants, byTextAscending, byTextDescending, darkTheme as dark, darkColors, lightTheme as light, lightColors, makeRender, links as menuConfig, types as toastTypes, useMatchBreakpoints, useModal, useParticleBurst, useTable, useWalletModal };
+export { Icon$1t as AddIcon, Icon$1s as AddNoRoundIcon, Icon$L as AlarmIcon, Alert, Icon$1r as ArrowBackIcon, Icon$1q as ArrowDownIcon, Icon$1j as ArrowDownNoCircleIcon, Icon$1p as ArrowDropDownIcon, Icon$1o as ArrowDropUpIcon, Icon$1n as ArrowForwardIcon, Icon$1m as AutoRenewIcon, Icon$1l as AvalancheIcon, Icon$1y as OptimismIcon, BackgroundImage, GridLayout$1 as BaseLayout, Icon$1k as BinanceIcon, Icon$1v as BlockIcon, Breadcrumbs, Button, ButtonMenu, ButtonMenuItem, Icon$1h as CalculateIcon, Card, CardBody, CardFooter, CardHeader, CardRibbon, Icon$1i as CardViewIcon, GridLayout as CardsLayout, ChainSelect, Checkbox, Icon$1x as CheckmarkCircleIcon, Icon$1g as CheckmarkIcon, Icon$1f as ChevronDownIcon, Icon$1e as ChevronLeftIcon, Icon$1d as ChevronRightIcon, Icon$1c as ChevronUpIcon, Icon$1b as CloseIcon, Icon$1a as CogIcon, Icon$18 as CommunityIcon, Icon$W as CopyCircleIcon, Icon$17 as CopyIcon, Dropdown, Icon$1w as ErrorIcon, Icon$16 as EthereumIcon, Icon$15 as FantomIcon, Flex, Heading, Icon$14 as HelpIcon, IconButton, Image, Icon$1u as InfoIcon, Input$1 as Input, Link, LinkExternal, Icon$13 as ListViewIcon, Icon$11 as LogoIcon, Icon$10 as LogoRoundIcon, Icon$12 as LogoWithTitleIcon, Menu, Icon$J as MetamaskIcon, Icon$$ as MiningIcon, Icon$_ as MinusIcon, Modal, ModalProvider, Icon$Z as NoProfileAvatarIcon, Icon$Y as OpenNewIcon, Icon$I as PaladinIcon, Icon$X as PancakesIcon, Progress, Icon$T as ProgressBunny, Radio, Icon$19 as RecentIcon, Icon$V as RemoveIcon, ResetCSS, Icon$P as SearchIcon, Skeleton, Spinner, Icon$K as SuccessIcon, Svg, Icon$O as SwapVertIcon, Icon$N as SyncAltIcon, Tag, Text, Icon$R as Ticket, Icon$Q as TicketRound, ToastContainer, Toggle, Icon$U as VerifiedIcon, Icon$M as WarningIcon, Icon$S as Won, variants as alertVariants, byTextAscending, byTextDescending, darkTheme as dark, darkColors, lightTheme as light, lightColors, makeRender, links as menuConfig, types as toastTypes, useMatchBreakpoints, useModal, useParticleBurst, useTable, useWalletModal };

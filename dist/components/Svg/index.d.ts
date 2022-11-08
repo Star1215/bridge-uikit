@@ -52,5 +52,6 @@ export { default as AlarmIcon } from "./Icons/Alarm";
 export { default as SuccessIcon } from "./Icons/Success";
 export { default as MetamaskIcon } from "./Icons/Metamask";
 export { default as PaladinIcon } from "./Icons/Paladin";
+export { default as OptimismIcon } from "./Icons/Optimism";
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";
